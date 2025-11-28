@@ -11,14 +11,16 @@ import {
   Clock,
   FileText
 } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 import { CoachingSessionForm } from './CoachingSessionForm';
 import { TimelineView } from './TimelineView';
 
 interface AdvisorDashboardProps {
   user: User;
+  onLogout: () => void;
 }
 
-export function AdvisorDashboard({ user }: AdvisorDashboardProps) {
+export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'students' | 'sessions' | 'timeline'>('overview');
   const [showSessionForm, setShowSessionForm] = useState(false);
 
@@ -59,7 +61,7 @@ export function AdvisorDashboard({ user }: AdvisorDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header is provided by NavBar - dashboard no longer renders a duplicate header */}
+      <PageHeader user={user} onLogout={onLogout} subtitle="อาจารย์ที่ปรึกษา" />
 
   {/* Navigation Tabs (sticky below NavBar) */}
   <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
@@ -119,10 +121,11 @@ export function AdvisorDashboard({ user }: AdvisorDashboardProps) {
 
               <div className="bg-white rounded-xl p-6 border border-gray-200">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="text-gray-600">Session สัปดาห์นี้</div>
+                  <div className="text-gray-600">Session ทั้งหมด</div>
                   <Calendar className="w-5 h-5 text-purple-600" />
                 </div>
-                <div className="text-gray-900">{sessionsThisWeek}</div>
+                <div className="text-gray-900">{totalSessions}</div>
+                <div className="text-sm text-gray-500 mt-1">สัปดาห์นี้: {sessionsThisWeek}</div>
               </div>
 
               <div className="bg-white rounded-xl p-6 border border-gray-200">
@@ -131,6 +134,7 @@ export function AdvisorDashboard({ user }: AdvisorDashboardProps) {
                   <AlertCircle className="w-5 h-5 text-orange-600" />
                 </div>
                 <div className="text-gray-900">{overdueItems.length}</div>
+                <div className="text-sm text-gray-500 mt-1">งานคงค้าง: {pendingItems.length}</div>
               </div>
             </div>
 

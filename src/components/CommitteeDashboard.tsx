@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { User, Evaluation } from '../types';
 import { mockProjects, mockUsers, mockEvaluations } from '../data/mockData';
 import { 
-  Briefcase, 
   FileText, 
   CheckSquare,
   ExternalLink,
@@ -11,12 +10,14 @@ import {
   Download
 } from 'lucide-react';
 import { EvaluationForm } from './EvaluationForm';
+import { PageHeader } from './PageHeader';
 
 interface CommitteeDashboardProps {
   user: User;
+  onLogout: () => void;
 }
 
-export function CommitteeDashboard({ user }: CommitteeDashboardProps) {
+export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) {
   const [activeTab, setActiveTab] = useState<'projects' | 'evaluations'>('projects');
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
@@ -35,9 +36,9 @@ export function CommitteeDashboard({ user }: CommitteeDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header is provided by NavBar - dashboard no longer renders a duplicate header */}
+      <PageHeader user={user} onLogout={onLogout} subtitle="กรรมการภายนอก" />
 
-  {/* Navigation Tabs (sticky below NavBar) */}
+  {/* Navigation Tabs (sticky below header) */}
   <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-1">

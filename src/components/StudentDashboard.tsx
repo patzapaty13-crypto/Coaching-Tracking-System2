@@ -9,14 +9,16 @@ import {
   User as UserIcon,
   AlertCircle
 } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 import { TimelineView } from './TimelineView';
 import { ActionItemsList } from './ActionItemsList';
 
 interface StudentDashboardProps {
   user: User;
+  onLogout: () => void;
 }
 
-export function StudentDashboard({ user }: StudentDashboardProps) {
+export function StudentDashboard({ user, onLogout }: StudentDashboardProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'timeline' | 'tasks' | 'portfolio'>('overview');
 
   // Get student's projects
@@ -42,9 +44,9 @@ export function StudentDashboard({ user }: StudentDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header is provided by NavBar - dashboard no longer renders a duplicate header */}
+    <PageHeader user={user} onLogout={onLogout} subtitle="นักศึกษา" />
 
-  {/* Navigation Tabs (sticky below NavBar) */}
+    {/* Navigation Tabs (sticky below header) */}
   <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-1">

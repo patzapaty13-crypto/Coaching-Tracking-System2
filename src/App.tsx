@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { StudentDashboard } from './components/StudentDashboard';
-import { AdvisorDashboard } from './components/AdvisorDashboard';
-import { AdminDashboard } from './components/AdminDashboard';
-import { CommitteeDashboard } from './components/CommitteeDashboard';
+import React, { useState, Suspense, lazy } from 'react';
 import { LoginPage } from './components/LoginPage';
-import { NavBar } from './components/NavBar';
+
+const StudentDashboard = lazy(() => import('./components/StudentDashboard').then(m => ({ default: m.StudentDashboard })));
+const AdvisorDashboard = lazy(() => import('./components/AdvisorDashboard').then(m => ({ default: m.AdvisorDashboard })));
+const AdminDashboard = lazy(() => import('./components/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
+const CommitteeDashboard = lazy(() => import('./components/CommitteeDashboard').then(m => ({ default: m.CommitteeDashboard })));
 
 export type UserRole = 'student' | 'advisor' | 'admin' | 'committee';
 
@@ -33,21 +33,20 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <NavBar user={currentUser} onLogout={handleLogout} />
-
-      {/* keep existing dashboards - NavBar provides global navigation */}
-      {currentUser.role === 'student' && (
-        <StudentDashboard user={currentUser} />
-      )}
-      {currentUser.role === 'advisor' && (
-        <AdvisorDashboard user={currentUser} />
-      )}
-      {currentUser.role === 'admin' && (
-        <AdminDashboard user={currentUser} />
-      )}
-      {currentUser.role === 'committee' && (
-        <CommitteeDashboard user={currentUser} />
-      )}
+      <Suspense fallback={<div className="p-8 text-center text-gray-500">Loading...</div>}>
+        {currentUser.role === 'student' && (
+          <StudentDashboard user={currentUser} onLogout={handleLogout} />
+        )}
+        {currentUser.role === 'advisor' && (
+          <AdvisorDashboard user={currentUser} onLogout={handleLogout} />
+        )}
+        {currentUser.role === 'admin' && (
+          <AdminDashboard user={currentUser} onLogout={handleLogout} />
+        )}
+        {currentUser.role === 'committee' && (
+          <CommitteeDashboard user={currentUser} onLogout={handleLogout} />
+        )}
+      </Suspense>
     </div>
   );
 }

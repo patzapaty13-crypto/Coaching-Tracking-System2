@@ -2,22 +2,22 @@ import { useState } from 'react';
 import { User } from '../types';
 import { mockProjects, mockCoachingSessions, mockUsers } from '../data/mockData';
 import { 
-  Shield, 
   TrendingUp, 
   Users, 
   FileText,
   Calendar,
   AlertTriangle,
-  CheckCircle,
   BarChart3,
   Download
 } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 
 interface AdminDashboardProps {
   user: User;
+  onLogout: () => void;
 }
 
-export function AdminDashboard({ user }: AdminDashboardProps) {
+export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'projects' | 'analytics' | 'reports'>('overview');
 
   // Calculate statistics
@@ -53,7 +53,7 @@ export function AdminDashboard({ user }: AdminDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header is provided by NavBar - dashboard no longer renders a duplicate header */}
+      <PageHeader user={user} onLogout={onLogout} subtitle="ผู้บริหาร" />
 
   {/* Navigation Tabs (sticky below NavBar) */}
   <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
