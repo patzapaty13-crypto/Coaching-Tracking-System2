@@ -5,7 +5,6 @@ import {
   Briefcase, 
   FileText, 
   CheckSquare,
-  LogOut,
   ExternalLink,
   Star,
   MessageSquare,
@@ -15,10 +14,9 @@ import { EvaluationForm } from './EvaluationForm';
 
 interface CommitteeDashboardProps {
   user: User;
-  onLogout: () => void;
 }
 
-export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) {
+export function CommitteeDashboard({ user }: CommitteeDashboardProps) {
   const [activeTab, setActiveTab] = useState<'projects' | 'evaluations'>('projects');
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
@@ -37,32 +35,10 @@ export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
-                <Briefcase className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="text-gray-900">{user.name}</div>
-                <div className="text-sm text-gray-500">กรรมการภายนอก</div>
-              </div>
-            </div>
-            <button
-              onClick={onLogout}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <LogOut className="w-4 h-4" />
-              ออกจากระบบ
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Header is provided by NavBar - dashboard no longer renders a duplicate header */}
 
-      {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200">
+  {/* Navigation Tabs (sticky below NavBar) */}
+  <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-1">
             {tabs.map((tab) => {

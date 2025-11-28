@@ -5,7 +5,6 @@ import {
   Users, 
   Calendar, 
   Plus,
-  LogOut,
   TrendingUp,
   AlertCircle,
   CheckCircle,
@@ -17,10 +16,9 @@ import { TimelineView } from './TimelineView';
 
 interface AdvisorDashboardProps {
   user: User;
-  onLogout: () => void;
 }
 
-export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
+export function AdvisorDashboard({ user }: AdvisorDashboardProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'students' | 'sessions' | 'timeline'>('overview');
   const [showSessionForm, setShowSessionForm] = useState(false);
 
@@ -61,32 +59,10 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="text-gray-900">{user.name}</div>
-                <div className="text-sm text-gray-500">อาจารย์ที่ปรึกษา</div>
-              </div>
-            </div>
-            <button
-              onClick={onLogout}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <LogOut className="w-4 h-4" />
-              ออกจากระบบ
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Header is provided by NavBar - dashboard no longer renders a duplicate header */}
 
-      {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200">
+  {/* Navigation Tabs (sticky below NavBar) */}
+  <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex gap-1">

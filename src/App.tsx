@@ -37,16 +37,16 @@ export default function App() {
 
       {/* keep existing dashboards - NavBar provides global navigation */}
       {currentUser.role === 'student' && (
-        <StudentDashboard user={currentUser} onLogout={handleLogout} />
+        <StudentDashboard user={currentUser} />
       )}
       {currentUser.role === 'advisor' && (
-        <AdvisorDashboard user={currentUser} onLogout={handleLogout} />
+        <AdvisorDashboard user={currentUser} />
       )}
       {currentUser.role === 'admin' && (
-        <AdminDashboard user={currentUser} onLogout={handleLogout} />
+        <AdminDashboard user={currentUser} />
       )}
       {currentUser.role === 'committee' && (
-        <CommitteeDashboard user={currentUser} onLogout={handleLogout} />
+        <CommitteeDashboard user={currentUser} />
       )}
     </div>
   );

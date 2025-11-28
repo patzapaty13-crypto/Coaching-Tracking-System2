@@ -7,21 +7,16 @@ import {
   CheckSquare, 
   FileText, 
   User as UserIcon,
-  LogOut,
-  Clock,
-  AlertCircle,
-  TrendingUp,
-  Upload
+  AlertCircle
 } from 'lucide-react';
 import { TimelineView } from './TimelineView';
 import { ActionItemsList } from './ActionItemsList';
 
 interface StudentDashboardProps {
   user: User;
-  onLogout: () => void;
 }
 
-export function StudentDashboard({ user, onLogout }: StudentDashboardProps) {
+export function StudentDashboard({ user }: StudentDashboardProps) {
   const [activeTab, setActiveTab] = useState<'overview' | 'timeline' | 'tasks' | 'portfolio'>('overview');
 
   // Get student's projects
@@ -47,32 +42,10 @@ export function StudentDashboard({ user, onLogout }: StudentDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <UserIcon className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <div className="text-gray-900">{user.name}</div>
-                <div className="text-sm text-gray-500">นักศึกษา</div>
-              </div>
-            </div>
-            <button
-              onClick={onLogout}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              <LogOut className="w-4 h-4" />
-              ออกจากระบบ
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Header is provided by NavBar - dashboard no longer renders a duplicate header */}
 
-      {/* Navigation Tabs */}
-      <div className="bg-white border-b border-gray-200">
+  {/* Navigation Tabs (sticky below NavBar) */}
+  <div className="bg-white border-b border-gray-200 sticky top-16 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex gap-1">
             {tabs.map((tab) => {
