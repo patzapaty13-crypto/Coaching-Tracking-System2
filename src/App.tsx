@@ -4,6 +4,7 @@ import { AdvisorDashboard } from './components/AdvisorDashboard';
 import { AdminDashboard } from './components/AdminDashboard';
 import { CommitteeDashboard } from './components/CommitteeDashboard';
 import { LoginPage } from './components/LoginPage';
+import { NavBar } from './components/NavBar';
 
 export type UserRole = 'student' | 'advisor' | 'admin' | 'committee';
 
@@ -32,6 +33,9 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <NavBar user={currentUser} onLogout={handleLogout} />
+
+      {/* keep existing dashboards - NavBar provides global navigation */}
       {currentUser.role === 'student' && (
         <StudentDashboard user={currentUser} onLogout={handleLogout} />
       )}
