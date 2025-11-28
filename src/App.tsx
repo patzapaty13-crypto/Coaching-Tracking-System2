@@ -17,14 +17,28 @@ export interface User {
 }
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(() => {
+    try {
+      const raw = localStorage.getItem('cts_current_user');
+      return raw ? (JSON.parse(raw) as User) : null;
+    } catch (e) {
+      return null;
+    }
+  });
 
-  const handleLogin = (user: User) => {
+  const handleLogin = (user: User, remember = true) => {
     setCurrentUser(user);
+    try {
+      if (remember) localStorage.setItem('cts_current_user', JSON.stringify(user));
+      else localStorage.removeItem('cts_current_user');
+    } catch (e) {
+      // ignore
+    }
   };
 
   const handleLogout = () => {
     setCurrentUser(null);
+    try { localStorage.removeItem('cts_current_user'); } catch (e) {}
   };
 
   if (!currentUser) {
