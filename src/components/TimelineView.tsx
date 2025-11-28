@@ -14,7 +14,7 @@ export function TimelineView({ sessions, userId }: TimelineViewProps) {
   );
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-6">
+    <div className="fancy-card">
       <h2 className="text-gray-900 mb-6">Timeline - Coaching History</h2>
       
       {sortedSessions.length === 0 ? (

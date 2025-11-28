@@ -73,11 +73,12 @@ export function LoginPage({ onLogin }: LoginPageProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {roleOptions.map((option) => {
               const Icon = option.icon;
+              const selected = selectedRole === option.role;
               return (
                 <button
                   key={option.role}
                   onClick={() => handleRoleSelect(option.role)}
-                  className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group"
+                  className={`bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200 group ${selected ? 'role-card-selected' : ''}`}
                 >
                   <div className={`${option.color} w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                     <Icon className="w-7 h-7 text-white" />

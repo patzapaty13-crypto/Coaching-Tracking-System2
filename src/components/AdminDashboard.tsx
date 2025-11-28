@@ -86,7 +86,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
           <div className="space-y-6">
             {/* Key Metrics */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">โปรเจกต์ทั้งหมด</div>
                   <FileText className="w-5 h-5 text-blue-600" />
@@ -96,8 +96,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
                   {projectsAtRisk.length} โปรเจกต์มีความเสี่ยง
                 </div>
               </div>
-
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">นักศึกษา</div>
                   <Users className="w-5 h-5 text-green-600" />
@@ -107,8 +106,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
                   {totalAdvisors} อาจารย์ที่ปรึกษา
                 </div>
               </div>
-
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">Coaching Sessions</div>
                   <Calendar className="w-5 h-5 text-purple-600" />
@@ -118,8 +116,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
                   เฉลี่ย {(totalSessions / totalProjects).toFixed(1)} ต่อโปรเจกต์
                 </div>
               </div>
-
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">ความคืบหน้าเฉลี่ย</div>
                   <TrendingUp className="w-5 h-5 text-orange-600" />
@@ -132,7 +129,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
             </div>
 
             {/* Project Status Overview */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">สถานะโปรเจกต์</h2>
               <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                 {Object.entries(projectsByStatus).map(([status, count]) => (
@@ -191,7 +188,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
             )}
 
             {/* All Projects Overview */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">โปรเจกต์ทั้งหมด</h2>
               <div className="space-y-4">
                 {mockProjects.map((project) => {
@@ -255,7 +252,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
         )}
 
         {activeTab === 'projects' && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="fancy-card">
             <h2 className="text-gray-900 mb-6">โปรเจกต์ทั้งหมด</h2>
             <div className="space-y-4">
               {mockProjects.map((project) => {
@@ -325,9 +322,9 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
           </div>
         )}
 
-        {activeTab === 'analytics' && (
+            {activeTab === 'analytics' && (
           <div className="space-y-6">
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">การวิเคราะห์ข้อมูล</h2>
               <div className="space-y-6">
                 <div>
@@ -382,7 +379,7 @@ export function AdminDashboard({ user, onLogout }: AdminDashboardProps) {
         )}
 
         {activeTab === 'reports' && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="fancy-card">
             <h2 className="text-gray-900 mb-6">ส่งออกรายงาน</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <button className="border border-gray-200 rounded-lg p-6 hover:border-blue-300 hover:bg-blue-50 transition-colors text-left">

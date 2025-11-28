@@ -103,7 +103,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
           <div className="space-y-6">
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">โปรเจกต์ทั้งหมด</div>
                   <FileText className="w-5 h-5 text-blue-600" />
@@ -111,7 +111,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
                 <div className="text-gray-900">{myProjects.length}</div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">นักศึกษา</div>
                   <Users className="w-5 h-5 text-green-600" />
@@ -119,7 +119,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
                 <div className="text-gray-900">{myStudents.length}</div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">Session ทั้งหมด</div>
                   <Calendar className="w-5 h-5 text-purple-600" />
@@ -128,7 +128,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
                 <div className="text-sm text-gray-500 mt-1">สัปดาห์นี้: {sessionsThisWeek}</div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">งานเกินกำหนด</div>
                   <AlertCircle className="w-5 h-5 text-orange-600" />
@@ -139,7 +139,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
             </div>
 
             {/* Projects Overview */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">โปรเจกต์ที่ดูแล</h2>
               <div className="space-y-4">
                 {myProjects.map((project) => {
@@ -198,7 +198,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
             </div>
 
             {/* Recent Sessions */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">Coaching Sessions ล่าสุด</h2>
               <div className="space-y-4">
                 {mySessions.slice(0, 3).map((session) => {
@@ -239,7 +239,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
         )}
 
         {activeTab === 'students' && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="fancy-card">
             <h2 className="text-gray-900 mb-6">นักศึกษาที่ดูแล</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {myStudents.map((student) => {
@@ -286,7 +286,7 @@ export function AdvisorDashboard({ user, onLogout }: AdvisorDashboardProps) {
         )}
 
         {activeTab === 'sessions' && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="fancy-card">
             <h2 className="text-gray-900 mb-6">Coaching Sessions ทั้งหมด</h2>
             <div className="space-y-4">
               {mySessions.map((session) => {

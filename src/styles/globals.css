@@ -187,3 +187,35 @@
 html {
   font-size: var(--font-size);
 }
+
+/* UI helpers */
+.fancy-card {
+  @apply bg-white rounded-xl p-6 border border-gray-100 shadow-sm transition-shadow;
+}
+.fancy-card:hover {
+  @apply shadow-lg;
+}
+
+.glass {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition;
+}
+
+.avatar {
+  @apply w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center;
+}
+
+.muted-shadow {
+  box-shadow: 0 6px 18px rgba(16,24,40,0.04);
+}
+
+.role-card-selected {
+  border: 2px solid rgba(59,130,246,0.15);
+  box-shadow: 0 8px 30px rgba(59,130,246,0.08);
+  transform: translateY(-4px);
+}

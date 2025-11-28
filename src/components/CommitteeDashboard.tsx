@@ -69,7 +69,7 @@ export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) 
           <div className="space-y-6">
             {/* Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">โปรเจกต์ทั้งหมด</div>
                   <FileText className="w-5 h-5 text-blue-600" />
@@ -77,7 +77,7 @@ export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) 
                 <div className="text-gray-900">{assignedProjects.length}</div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">ประเมินแล้ว</div>
                   <CheckSquare className="w-5 h-5 text-green-600" />
@@ -85,7 +85,7 @@ export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) 
                 <div className="text-gray-900">{myEvaluations.length}</div>
               </div>
 
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">รอประเมิน</div>
                   <FileText className="w-5 h-5 text-orange-600" />
@@ -97,7 +97,7 @@ export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) 
             </div>
 
             {/* Projects List */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">โปรเจกต์ที่ต้องประเมิน</h2>
               <div className="space-y-4">
                 {assignedProjects.map((project) => {
@@ -187,7 +187,7 @@ export function CommitteeDashboard({ user, onLogout }: CommitteeDashboardProps) 
         )}
 
         {activeTab === 'evaluations' && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="fancy-card">
             <h2 className="text-gray-900 mb-6">การประเมินของฉัน</h2>
             {myEvaluations.length === 0 ? (
               <div className="text-center py-12">

@@ -77,31 +77,28 @@ export function StudentDashboard({ user, onLogout }: StudentDashboardProps) {
           <div className="space-y-6">
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">โปรเจกต์ของฉัน</div>
                   <FileText className="w-5 h-5 text-blue-600" />
                 </div>
                 <div className="text-gray-900">{myProjects.length}</div>
               </div>
-
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">Coaching Sessions</div>
                   <Calendar className="w-5 h-5 text-green-600" />
                 </div>
                 <div className="text-gray-900">{mySessions.length}</div>
               </div>
-
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">งานค้าง</div>
                   <AlertCircle className="w-5 h-5 text-orange-600" />
                 </div>
                 <div className="text-gray-900">{pendingTasks.length}</div>
               </div>
-
-              <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <div className="fancy-card">
                 <div className="flex items-center justify-between mb-2">
                   <div className="text-gray-600">งานเสร็จแล้ว</div>
                   <CheckSquare className="w-5 h-5 text-purple-600" />
@@ -111,7 +108,7 @@ export function StudentDashboard({ user, onLogout }: StudentDashboardProps) {
             </div>
 
             {/* Projects */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">โปรเจกต์ของฉัน</h2>
               <div className="space-y-4">
                 {myProjects.map((project) => {
@@ -166,25 +163,25 @@ export function StudentDashboard({ user, onLogout }: StudentDashboardProps) {
             </div>
 
             {/* Upcoming Tasks */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">งานที่ต้องทำ</h2>
               <ActionItemsList items={pendingTasks.slice(0, 5)} />
             </div>
           </div>
         )}
 
-        {activeTab === 'timeline' && (
+            {activeTab === 'timeline' && (
           <TimelineView sessions={mySessions} userId={user.id} />
         )}
 
-        {activeTab === 'tasks' && (
+            {activeTab === 'tasks' && (
           <div className="space-y-6">
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">งานค้าง ({pendingTasks.length})</h2>
               <ActionItemsList items={pendingTasks} />
             </div>
 
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="fancy-card">
               <h2 className="text-gray-900 mb-6">งานเสร็จแล้ว ({completedTasks.length})</h2>
               <ActionItemsList items={completedTasks} />
             </div>
@@ -192,7 +189,7 @@ export function StudentDashboard({ user, onLogout }: StudentDashboardProps) {
         )}
 
         {activeTab === 'portfolio' && (
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
+          <div className="fancy-card">
             <div className="text-center py-12">
               <FileText className="w-16 h-16 text-gray-300 mx-auto mb-4" />
               <h3 className="text-gray-900 mb-2">Portfolio</h3>
